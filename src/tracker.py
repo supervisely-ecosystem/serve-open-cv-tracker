@@ -25,7 +25,6 @@ class TrackerContainer:
 
         g.logger.info(f'TrackerController Initialized')
 
-
     def add_geometries(self):
         for figure_id in self.figure_ids:
             figure = g.api.video.figure.get_info_by_id(figure_id)
