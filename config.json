@@ -18,7 +18,7 @@
   "isolate": true,
   "headless": true,
   "session_tags": [
-    "video_annotator_tracker"
+    "sly_video_tracking"
   ],
   "context_menu": {
     "target": [

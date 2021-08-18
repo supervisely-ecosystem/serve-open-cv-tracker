@@ -4,6 +4,8 @@ import pathlib
 import supervisely_lib as sly
 from dotenv import load_dotenv  # pip install python-dotenv\
 
+logger = sly.logger
+
 load_dotenv("../debug.env")
 load_dotenv("../secret_debug.env", override=True)
 
