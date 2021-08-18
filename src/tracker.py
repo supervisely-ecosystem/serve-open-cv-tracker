@@ -6,26 +6,8 @@ import sly_globals as g
 import supervisely_lib as sly
 
 
-class TrackerController:
-    def __init__(self):
-        self.tracker = None
-
-        self.frame_index = 0
-        self.frames_count = 0
-
-        self.frames_indexes = []
-
-        self.track_id = 0
-        self.video_id = 0
-        self.object_ids = []
-        self.figure_ids = []
-        self.direction = 'forward'
-
-        self.geometries = []
-
-        g.logger.info(f'TrackerController Initialized')
-
-    def add_context(self, context):
+class TrackerContainer:
+    def __init__(self, context):
         self.frame_index = context["frameIndex"]
         self.frames_count = context["frames"]
 
@@ -35,10 +17,14 @@ class TrackerController:
         self.figure_ids = list(context["figureIds"])
         self.direction = context["direction"]
 
+        self.geometries = []
+        self.frames_indexes = []
+
         self.add_geometries()
         self.add_frames_indexes()
 
-        g.logger.info(f'Context added')
+        g.logger.info(f'TrackerController Initialized')
+
 
     def add_geometries(self):
         for figure_id in self.figure_ids:

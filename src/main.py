@@ -3,7 +3,7 @@ import functools
 import sly_globals as g
 import supervisely_lib as sly
 
-from tracker import TrackerController
+from tracker import TrackerContainer
 
 
 def send_error_data(func):
@@ -31,9 +31,7 @@ def get_session_info(api: sly.Api, task_id, context, state, app_logger):
 @sly.timeit
 @send_error_data
 def track(api: sly.Api, task_id, context, state, app_logger):
-    tracker = TrackerController()
-    tracker.add_context(context)
-
+    tracker = TrackerContainer(context)
     tracker.track()
 
 
