@@ -56,6 +56,7 @@ class TrackerController:
 
     def track(self):
         images_cache = {}
+        current_progress = 0
 
         all_figures = self.figure_ids.copy()
         all_objects = self.object_ids.copy()
@@ -70,6 +71,9 @@ class TrackerController:
             frame_start = None
 
             for enumerate_frame_index, frame_index in enumerate(self.frames_indexes):
+                if frame_start is None:
+                    frame_start = frame_index
+
                 img_bgr = sly_functions.get_frame_np(g.api, images_cache, self.video_id, frame_index)
                 img_height, img_width = img_bgr.shape[:2]
 
@@ -92,6 +96,20 @@ class TrackerController:
                                                                       bbox_predicted.to_json(),
                                                                       bbox_predicted.geometry_name(),
                                                                       self.track_id)
+
+                        current_progress += 1
+                        if enumerate_frame_index != 0 or frame_index == self.frames_indexes[-1]:
+                            need_stop = g.api.video.notify_progress(self.track_id, self.video_id,
+                                                                    min(frame_start, frame_index),
+                                                                    max(frame_start, frame_index),
+                                                                    current_progress,
+                                                                    len(self.frames_indexes) * len(all_figures))
+                            frame_start = None
+                            if need_stop:
+                                g.logger.debug('Tracking was stopped', extra={'track_id': self.track_id})
+                                break
+                g.logger.info(f'Process frame {enumerate_frame_index} — {frame_index}')
+        g.logger.info(f'Tracking completed')
 
 
 """
