@@ -57,6 +57,7 @@ class TrackerController:
     def track(self):
         images_cache = {}
         current_progress = 0
+        notify_every = sly_functions.calculate_nofity_step(self.frames_count)
 
         all_figures = self.figure_ids.copy()
         all_objects = self.object_ids.copy()
@@ -98,7 +99,8 @@ class TrackerController:
                                                                       self.track_id)
 
                         current_progress += 1
-                        if enumerate_frame_index != 0 or frame_index == self.frames_indexes[-1]:
+                        if (current_progress % notify_every == 0 and frame_index != 0) or frame_index == \
+                                self.frames_indexes[-1]:
                             need_stop = g.api.video.notify_progress(self.track_id, self.video_id,
                                                                     min(frame_start, frame_index),
                                                                     max(frame_start, frame_index),

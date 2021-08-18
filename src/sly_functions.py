@@ -52,3 +52,12 @@ def validate_figure(img_height, img_width, figure):
     else:
         return figure
 
+
+def calculate_nofity_step(frames_forward):
+    if frames_forward > 40:
+        return 10
+    else:
+        return 5
+
+
+
