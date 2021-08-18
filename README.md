@@ -1,1 +1,1 @@
-# serve-open-cv-tracker
+## The simplest tracking server (OpenCV based)
