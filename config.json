@@ -19,10 +19,5 @@
   "headless": true,
   "session_tags": [
     "sly_video_tracking"
-  ],
-  "context_menu": {
-    "target": [
-      "files_file"
-    ]
-  }
+  ]
 }
