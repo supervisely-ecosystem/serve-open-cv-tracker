@@ -1,16 +1,9 @@
 import functools
-from functools import lru_cache
 
 import sly_globals as g
 import supervisely_lib as sly
 
 from tracker import TrackerController
-
-
-@lru_cache(maxsize=10)
-def get_image_by_id(image_id):
-    img = g.api.image.download_np(image_id)
-    return img
 
 
 def send_error_data(func):
@@ -40,7 +33,7 @@ def get_session_info(api: sly.Api, task_id, context, state, app_logger):
 def track(api: sly.Api, task_id, context, state, app_logger):
     tracker = TrackerController()
     tracker.add_context(context)
-    # tracker.init_tracker()
+
     tracker.track()
 
 
@@ -55,19 +48,8 @@ def main():
 
 if __name__ == "__main__":
     sly.main_wrapper("main", main)
-    # # track({
-    # #     "command": 'track',
-    # #     "context": {
-    # #
-    # #     },
-    # #     'state': {},
-    # #     'user_api_key': 'yEUH28Eb5uFUDPYMKzVfnZp2MTPLJbLbNKk5uSfVSwqIrehiU4UG8FCWe4JsFUATycNmOJZ2NKu3A8u9JRaDPEEOdGudZ1hoqKY3d01rAH2q0NA2pgrWGUpMB9zl0EG1',
-    # #     'api_token': 'yEUH28Eb5uFUDPYMKzVfnZp2MTPLJbLbNKk5uSfVSwqIrehiU4UG8FCWe4JsFUATycNmOJZ2NKu3A8u9JRaDPEEOdGudZ1hoqKY3d01rAH2q0NA2pgrWGUpMB9zl0EG1',
-    # #     'instance_type': None,
-    # #     'server_address': 'http://192.168.50.207'
-    # # })
     #
-    # track({
+    # track({  # for debug
     #     "teamId": 11,
     #     "workspaceId": 32,
     #     "videoId": 1114885,
