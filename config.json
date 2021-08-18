@@ -10,7 +10,7 @@
   "main_script": "src/main.py",
 
   "task_location": "application_sessions",
-  "icon": "https://i.imgur.com/YJq4bFw.png",
+  "icon": "https://imgur.com/1Lcyx2p.png",
   "icon_cover": true,
   "isolate": true,
   "headless": true,
