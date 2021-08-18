@@ -1,0 +1,7 @@
+__pycache__
+secret_debug.env
+.idea
+.DS_Store
+authorized_keys
+media
+venv
