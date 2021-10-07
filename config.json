@@ -11,7 +11,8 @@
 
   "task_location": "application_sessions",
   "icon": "https://imgur.com/1Lcyx2p.png",
-  "icon_cover": true,
+  "icon_cover": false,
+  "icon_background": "#FFFFFF",
   "isolate": true,
   "headless": true,
   "session_tags": [
