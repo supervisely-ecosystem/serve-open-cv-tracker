@@ -2,8 +2,11 @@
   "name": "[beta] Serve OpenCV",
   "type": "app",
   "categories": [
-    "tracking",
-    "video"
+    "neural network",
+    "videos",
+    "detection & tracking",
+    "serve",
+    "development"
   ],
   "description": "serve and use in videos annotator",
   "docker_image": "supervisely/base-py-sdk:6.1.94",
