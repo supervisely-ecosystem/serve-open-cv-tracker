@@ -9,9 +9,8 @@
     "development"
   ],
   "description": "serve and use in videos annotator",
-  "docker_image": "supervisely/base-py-sdk:6.1.94",
+  "docker_image": "supervisely/base-py-sdk:6.35.0",
   "main_script": "src/main.py",
-
   "task_location": "application_sessions",
   "icon": "https://imgur.com/a9u0M3Y.png",
   "icon_cover": true,
